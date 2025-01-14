@@ -1,0 +1,30 @@
+{
+    "sourceFile": "vercel.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1736821505831,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1736821527538,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,13 +7,13 @@\n   ],\r\n   \"routes\": [\r\n     {\r\n       \"src\": \"/api/(.*)\",\r\n-      \"dest\": \"Backend/app.js\"\r\n+      \"dest\": \"app.js\"\r\n     },\r\n     {\r\n       \"src\": \"/(.*)\",\r\n-      \"dest\": \"Backend/Frontend/dist/$1\"\r\n+      \"dest\": \"Frontend/dist/$1\"\r\n     }\r\n   ],\r\n   \"rewrites\": [\r\n     {\r\n"
+                },
+                {
+                    "date": 1736831001783,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,12 +13,7 @@\n     {\r\n       \"src\": \"/(.*)\",\r\n       \"dest\": \"Frontend/dist/$1\"\r\n     }\r\n-  ],\r\n-  \"rewrites\": [\r\n-    {\r\n-      \"source\": \"/(.*)\",\r\n-      \"destination\": \"/\"\r\n-    }\r\n   ]\r\n+ \r\n }\r\n"
+                },
+                {
+                    "date": 1736831031992,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,6 +14,5 @@\n       \"src\": \"/(.*)\",\r\n       \"dest\": \"Frontend/dist/$1\"\r\n     }\r\n   ]\r\n- \r\n-}\r\n+} \n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1736821505831,
+            "name": "Commit-0",
+            "content": "{\r\n  \"builds\": [\r\n    {\r\n      \"src\": \"app.js\",\r\n      \"use\": \"@vercel/node\"\r\n    }\r\n  ],\r\n  \"routes\": [\r\n    {\r\n      \"src\": \"/api/(.*)\",\r\n      \"dest\": \"Backend/app.js\"\r\n    },\r\n    {\r\n      \"src\": \"/(.*)\",\r\n      \"dest\": \"Backend/Frontend/dist/$1\"\r\n    }\r\n  ],\r\n  \"rewrites\": [\r\n    {\r\n      \"source\": \"/(.*)\",\r\n      \"destination\": \"/\"\r\n    }\r\n  ]\r\n}\r\n"
+        }
+    ]
+}

@@ -8,11 +8,17 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "app.js"
+      "dest": "Backend/app.js"
     },
     {
       "src": "/(.*)",
-      "dest": "Frontend/dist/$1"
+      "dest": "Backend/Frontend/dist/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
-} 
+}

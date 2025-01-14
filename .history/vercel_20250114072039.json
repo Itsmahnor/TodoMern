@@ -1,0 +1,24 @@
+{
+  "builds": [
+    {
+      "src": "Backend/app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "Backend/app.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "Backend/Frontend/dist/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
