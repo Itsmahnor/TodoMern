@@ -50,10 +50,10 @@ Open **http://localhost:8001** in your browser.
 
 | Layer | Technology |
 |-------|-----------|
-| Frontend | React, Vite, Tailwind CSS, Redux |
+| Frontend | React, Vite, Tailwind CSS |
 | Backend | Node.js, Express.js |
 | Database | MongoDB Atlas, Mongoose |
-| HTTP Client | Axios |
+
 
 ---
 
