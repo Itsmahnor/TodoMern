@@ -1,20 +1,17 @@
-const mongoose=require('mongoose');
+const mongoose = require("mongoose");
 
-const Database=async (req,res) => {
+const Database = async () => {
   try {
-    await mongoose.connect("mongodb+srv://todo:todo@cluster0.bxfxd.mongodb.net/",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        autoIndex: true, }
-    ).then(()=>{
-      console.log("Connected")
-    })
+    await mongoose.connect(
+      "mongodb://mahnoorsarfraz23:todo123@ac-bp17jym-shard-00-00.fwf0zkp.mongodb.net:27017,ac-bp17jym-shard-00-01.fwf0zkp.mongodb.net:27017,ac-bp17jym-shard-00-02.fwf0zkp.mongodb.net:27017/?ssl=true&replicaSet=atlas-r3opgh-shard-0&authSource=admin&appName=Cluster0"
+    );
 
-     
-   } catch (error) {
-     res.status(400).json({message: "Not ConnectedD!"});
-     console.log("Not connected",error)
-   }
-}
+    console.log("Connected to MongoDB ✅");
+  } catch (error) {
+    console.log("Not connected ❌", error.message);
+  }
+};
+
 Database();
+
+module.exports = Database;

@@ -17,7 +17,7 @@ function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${window.location.origin}/api/viv/signin`, input);
+      const response = await axios.post(`http://localhost:8001/api/viv/signin`, input);
       if (response.status === 200) {
         const { userId, message } = response.data;
         alert(` ${message}`);

@@ -15,7 +15,8 @@ function SignUp() {
      
     e.preventDefault();
     try {
-      const response = await axios.post(`${window.location.origin}/api/viv/register`, input);
+      
+      const response = await axios.post(`http://localhost:8001/api/viv/register`, input);
       console.log(response.data); // Log response data
       alert(response.data.message || "Registration successful!");
       setInput({ name: "", email: "", password: "" });

@@ -29,7 +29,7 @@ export const Update = () => {
     setLoading(true);
     try {
       const response = await axios.put(
-        `${window.location.origin}/api/list/updatetask/${index}`,
+        `http://localhost:8001/api/list/updatetask/${index}`,
         {
           id: id,
           title: input.title,

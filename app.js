@@ -1,3 +1,5 @@
+const dns = require("dns");
+dns.setDefaultResultOrder("ipv4first");
 const express = require('express');
 const app = express();
 const cors = require("cors");
@@ -22,7 +24,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "Frontend", "dist", "index.html"));
 });
 
-// Start the server
+
 app.listen(8001, () => {
   console.log('Server is running on port 8001');
 });

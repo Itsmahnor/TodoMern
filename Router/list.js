@@ -4,24 +4,22 @@ const Lists=require('../Models/list');
 
 // create
 
-Router.post("/addtask",async(req,res)=>{
+Router.post("/addtask", async (req, res) => {
   try {
-    const{id,body,title}=req.body;
-    const  existinguser=await User.findById(id);
+    const { id, body, title } = req.body;
+    const existinguser = await User.findById(id);
     if (!existinguser) {
       return res.status(404).json({ message: "User not found" });
     }
-    if(existinguser){
-      const list=new Lists({title,body,user:existinguser});
-      await list.save().then(()=> res.status(200).json({list}));
-      existinguser.list.push(list);
-      existinguser.save();
-    }
+    const list = new Lists({ title, body, user: id });
+    await list.save();
+    existinguser.list.push(list._id);
+    await existinguser.save();
+    res.status(200).json({ list });
   } catch (error) {
-    console.log(error)
-    res.status(400).json({message:"error in pushing"});
+    console.log(error);
+    res.status(400).json({ message: "error in pushing" });
   }
-
 });
 
 // update
@@ -65,15 +63,14 @@ if(existinguser){
 
 
 // gettask
-Router.get("/gettask/:id",async(req,res)=>{
+Router.get("/gettask/:id", async (req, res) => {
   try {
-    const list=await Lists.find({user:req.params.id});
+    const list = await Lists.find({ user: new mongoose.Types.ObjectId(req.params.id) });
     res.status(200).json(list);
   } catch (error) {
     console.error("Error getting task:", error);
     res.status(400).json({ message: "Error in getting task" });
   }
-
-})
+});
 
 module.exports=Router;

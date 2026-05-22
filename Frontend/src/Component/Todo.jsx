@@ -11,7 +11,7 @@ export const Todo = () => {
   let id = sessionStorage.getItem("id");
   const [input, setInput] = useState({ title: "", body: "" });
   const [todos, setTodos] = useState([]);
-  const [refresh, setRefresh] = useState(false); // Trigger re-fetch
+  const [refresh, setRefresh] = useState(false); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +29,7 @@ export const Todo = () => {
 
     try {
       if (id) {
-        await axios.post(`${window.location.origin}/api/list/addtask`, {
+        await axios.post(`http://localhost:8001/api/list/addtask`, {
           id,
           body: input.body,
           title: input.title,
@@ -45,10 +45,10 @@ export const Todo = () => {
       toast.error("Failed to add task. Please try again.");
     }
   };
-
+console.log("todo is", todos);
   const deleteItem = async (taskId) => { // Renamed Cardid to taskId for clarity
     try {
-      await axios.delete(`${window.location.origin}/api/list/deleteTask/${taskId}`, {
+      await axios.delete(`http://localhost:8001/api/list/deleteTask/${taskId}`, {
         data: { id: id }, // User ID
       }).then((res)=>console.log(res.data));
       toast.success("Task deleted successfully!");
@@ -70,14 +70,14 @@ export const Todo = () => {
    
     const fetchTasks = async () => {
       try {
-        const res = await axios.get(`${window.location.origin}/api/list/gettask/${id}`);
-        setTodos(res.data);
+        const res = await axios.get(`http://localhost:8001/api/list/gettask/${id}`);
+       setTodos(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         toast.error("Failed to fetch tasks.");
       }
     };
     {isLoggedIn&&  fetchTasks();}
-  }, [addTodo]); // Fetch whenever `refresh` changes
+  }, [refresh, isLoggedIn]);
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-gradient-to-r from-pink-100 via-purple-200 to-blue-100 py-10">
@@ -114,7 +114,7 @@ export const Todo = () => {
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           {todos.map((todo, index) => (
             <div
-              key={todo._id} // Use unique key
+              key={todo._id} 
               className="relative bg-gradient-to-r from-blue-50 via-pink-50 to-purple-50 p-5 rounded-2xl border-2 border-purple-300 shadow-md hover:shadow-xl transition-all duration-300"
             >
               <h3 className="text-2xl font-bold text-purple-700">{todo.title}</h3>
